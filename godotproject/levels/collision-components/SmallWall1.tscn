@@ -5,14 +5,12 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16.0932, 16.28 )
 
-[node name="SmallWall1" type="Node2D"]
+[node name="SmallWall1" type="StaticBody2D"]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="Sprite" type="Sprite" parent="StaticBody2D"]
+[node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 143.67, 15.7177, 32.3851, 32.6232 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
