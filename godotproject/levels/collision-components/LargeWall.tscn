@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/Dungeon Ruins Tileset Day.png" type="Texture" id=1]
+
+[node name="LargeWall" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+build_mode = 1
+polygon = PoolVector2Array( -24.4299, -24.4524, 23.7874, -24.2539, 23.9858, 23.3681, -24.0331, 23.3681 )
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D"]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 15.9068, 15.8125, 48.5292, 49.1595 )
