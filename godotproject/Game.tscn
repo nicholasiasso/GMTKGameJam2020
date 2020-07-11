@@ -48,3 +48,4 @@ position = Vector2( 121.308, 145.365 )
 
 [node name="Character" parent="." instance=ExtResource( 1 )]
 position = Vector2( 122.57, 106.569 )
+INPUT_DELAY_MSECS = 1000.0
