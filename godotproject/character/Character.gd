@@ -22,7 +22,10 @@ func _process(_delta: float) -> void:
 	save_current_input()
 	if !!colliding_checkpoint:
 		if abs(rotation) < 0.1 and linear_velocity.length_squared() <= 0.1:
+			if !!active_checkpoint:
+				active_checkpoint.is_active = false
 			active_checkpoint = colliding_checkpoint
+			active_checkpoint.is_active = true
 
 func _integrate_forces(state: Physics2DDirectBodyState) -> void:
 	if Input.is_action_just_pressed("reset"):
