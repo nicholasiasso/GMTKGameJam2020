@@ -39,8 +39,13 @@ func _integrate_forces(state: Physics2DDirectBodyState) -> void:
 	if !current_input:
 		return
 		
-	var thrust: Vector2 = Vector2(0, -THRUST_FORCE).rotated(rotation)
-	set_applied_force(thrust * current_input.up_action_strength)
+	var applied_thrust: Vector2 = Vector2(0, -THRUST_FORCE).rotated(rotation) * current_input.up_action_strength
+	
+	set_applied_force(applied_thrust)
+	#Set whether fire particle should be emitting
+	var fire_particle = $FireParticle
+	fire_particle.emitting = applied_thrust != Vector2.ZERO
+	fire_particle.angle = -self.rotation_degrees
 
 	var rotation_direction = current_input.right_action_strength - current_input.left_action_strength
 	var target_angular_velocity: float = rotation_direction * ROTATION_SPEED

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/lander.png" type="Texture" id=1]
 [ext_resource path="res://character/Character.gd" type="Script" id=2]
+[ext_resource path="res://character/FireParticle.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 14, 8 )
@@ -25,5 +26,8 @@ polygon = PoolVector2Array( -12.5, 14, -9.5, 14, -6.5, 7.5, 6.5, 7.5, 9.5, 14, 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CheckpointCollider"]
 position = Vector2( 0, 8 )
 shape = SubResource( 1 )
+
+[node name="FireParticle" parent="." instance=ExtResource( 3 )]
+position = Vector2( 0, 12 )
 [connection signal="area_entered" from="CheckpointCollider" to="." method="_on_CheckpointCollider_area_entered"]
 [connection signal="area_exited" from="CheckpointCollider" to="." method="_on_CheckpointCollider_area_exited"]
