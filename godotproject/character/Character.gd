@@ -42,11 +42,8 @@ func save_current_input() -> void:
 	input_slices.push_back(current_input)
 
 func pop_and_return_delayed_input() -> InputSlice:
-	if input_slices.size() == 0:
-		return null
-		
 	var current_game_tick_msec = OS.get_ticks_msec()
 	var result: InputSlice
-	while input_slices.front().game_tick_msec + INPUT_DELAY_MSECS < current_game_tick_msec:
+	while input_slices.size() != 0 and input_slices.front().game_tick_msec + INPUT_DELAY_MSECS < current_game_tick_msec:
 		result = input_slices.pop_front()
 	return result
