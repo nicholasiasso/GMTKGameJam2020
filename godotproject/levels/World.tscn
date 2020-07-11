@@ -1,48 +1,22 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://levels/collision-components/Row.tscn" type="PackedScene" id=1]
-[ext_resource path="res://levels/collision-components/RowBroken.tscn" type="PackedScene" id=2]
-[ext_resource path="res://levels/collision-components/LargeWall.tscn" type="PackedScene" id=3]
-[ext_resource path="res://levels/collision-components/ColumnBroken.tscn" type="PackedScene" id=4]
-[ext_resource path="res://levels/collision-components/SmallWall4.tscn" type="PackedScene" id=5]
 [ext_resource path="res://levels/Checkpoint.tscn" type="PackedScene" id=6]
-[ext_resource path="res://levels/collision-components/Column.tscn" type="PackedScene" id=7]
 [ext_resource path="res://character/Character.tscn" type="PackedScene" id=8]
 
 [node name="World" type="Node2D"]
 
-[node name="Checkpoint" parent="." instance=ExtResource( 6 )]
-position = Vector2( 180.03, 34.9563 )
-
-[node name="Checkpoint2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 50.8923, 109.014 )
-
-[node name="Checkpoint3" parent="." instance=ExtResource( 6 )]
-position = Vector2( 122.173, 109.014 )
-
-[node name="ColumnBroken2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 271.368, 142.34 )
-
-[node name="ColumnBroken" parent="." instance=ExtResource( 4 )]
-position = Vector2( 244.985, 142.186 )
-
-[node name="SmallWall4" parent="." instance=ExtResource( 5 )]
-position = Vector2( 19.7265, 72.448 )
-
 [node name="Row" parent="." instance=ExtResource( 1 )]
-position = Vector2( 180.03, 109.014 )
-
-[node name="RowBroken" parent="." instance=ExtResource( 2 )]
-position = Vector2( 180.339, 55.4765 )
-
-[node name="Column" parent="." instance=ExtResource( 7 )]
-position = Vector2( 87.6125, 101.454 )
-
-[node name="LargeWall" parent="." instance=ExtResource( 3 )]
-position = Vector2( 40.1154, 144.819 )
-
-[node name="LargeWall2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 121.308, 145.365 )
+position = Vector2( 32, 152 )
 
 [node name="Character" parent="." instance=ExtResource( 8 )]
-position = Vector2( 122.57, 106.569 )
+position = Vector2( 23.9808, 16.6199 )
+
+[node name="Row2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 128, 136 )
+
+[node name="Row3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 80, 136 )
+
+[node name="Checkpoint" parent="." instance=ExtResource( 6 )]
+position = Vector2( 32, 136 )

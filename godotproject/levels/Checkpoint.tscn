@@ -4,7 +4,6 @@
 [ext_resource path="res://levels/Checkpoint.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/activated.png" type="Texture" id=3]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 
 [sub_resource type="Animation" id=2]
@@ -46,16 +45,18 @@ position = Vector2( 0, -0.133166 )
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -4 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -4 )
 texture = ExtResource( 1 )
 
 [node name="HoverAnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Float = SubResource( 2 )
 
 [node name="ActivatedGlow" type="Sprite" parent="."]
-position = Vector2( 0, 11 )
+position = Vector2( 0, 7 )
 texture = ExtResource( 3 )
 vframes = 2
 

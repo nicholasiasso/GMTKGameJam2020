@@ -4,7 +4,6 @@
 [ext_resource path="res://character/Character.gd" type="Script" id=2]
 [ext_resource path="res://character/FireParticle.tscn" type="PackedScene" id=3]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 14, 8 )
 
@@ -14,10 +13,7 @@ contacts_reported = 2
 contact_monitor = true
 can_sleep = false
 script = ExtResource( 2 )
-ROTATION_SPEED = null
-ROTATION_ACCEL = null
-THRUST_FORCE = null
-INPUT_DELAY_MSECS = 0.0
+INPUT_DELAY_MSECS = 1000.0
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )

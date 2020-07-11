@@ -29,10 +29,12 @@ func _process(_delta: float) -> void:
 
 func _integrate_forces(state: Physics2DDirectBodyState) -> void:
 	if Input.is_action_just_pressed("reset"):
-		state.transform = Transform2D(0.0, active_checkpoint.global_position)
+		state.transform = Transform2D(0.0, active_checkpoint.get_spawn_position())
 		state.linear_velocity = Vector2.ZERO
 		state.angular_velocity = 0.0
 		input_slices = []
+		set_applied_force(Vector2.ZERO)
+		set_applied_torque(0.0)
 		return
 		
 	var current_input: InputSlice = pop_and_return_delayed_input()
