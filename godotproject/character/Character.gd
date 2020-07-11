@@ -11,6 +11,10 @@ var active_checkpoint: Checkpoint
 var colliding_checkpoint: Checkpoint
 var is_on_screen: bool = true
 
+var camera: Camera2D
+
+signal active_checkpoint_changed(checkpoint)
+
 func _ready():
 	$VisibilityHitbox.connect("screen_exited", self, "left_screen")
 
@@ -24,12 +28,13 @@ class InputSlice:
 	
 func _process(_delta: float) -> void:
 	save_current_input()
-	if !!colliding_checkpoint:
+	if !!colliding_checkpoint and active_checkpoint != colliding_checkpoint:
 		if abs(rotation) < 0.1 and linear_velocity.length_squared() <= 0.1:
 			if !!active_checkpoint:
 				active_checkpoint.is_active = false
 			active_checkpoint = colliding_checkpoint
 			active_checkpoint.is_active = true
+			emit_signal("active_checkpoint_changed", active_checkpoint)
 
 func _integrate_forces(state: Physics2DDirectBodyState) -> void:
 	if Input.is_action_just_pressed("reset") || !self.is_on_screen:

@@ -13,24 +13,28 @@ contacts_reported = 2
 contact_monitor = true
 can_sleep = false
 script = ExtResource( 2 )
+INPUT_DELAY_MSECS = 0.0
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, 2 )
 texture = ExtResource( 1 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( 0, 2 )
 polygon = PoolVector2Array( -12.5, 14, -9.5, 14, -6.5, 7.5, 6.5, 7.5, 9.5, 14, 12.5, 14, 7.5, 5.5, 10.5, 3.5, 10.5, -2.5, 3.5, -9.5, -3.5, -9.5, -10.5, -2.5, -10.5, 3.5, -7.5, 5.5 )
 
 [node name="CheckpointCollider" type="Area2D" parent="."]
+position = Vector2( 0, 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CheckpointCollider"]
 position = Vector2( 0, 8 )
 shape = SubResource( 1 )
 
 [node name="FireParticle" parent="." instance=ExtResource( 3 )]
-position = Vector2( 0, 12 )
+position = Vector2( 0, 14 )
 
 [node name="VisibilityHitbox" type="VisibilityNotifier2D" parent="."]
-position = Vector2( -7.15256e-07, 7.15256e-07 )
+position = Vector2( 0, 2 )
 scale = Vector2( 1.6, 1.6 )
 [connection signal="area_entered" from="CheckpointCollider" to="." method="_on_CheckpointCollider_area_entered"]
 [connection signal="area_exited" from="CheckpointCollider" to="." method="_on_CheckpointCollider_area_exited"]
