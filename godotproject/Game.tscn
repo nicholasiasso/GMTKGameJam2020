@@ -13,8 +13,14 @@
 [node name="Game" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="Character" parent="." instance=ExtResource( 1 )]
-position = Vector2( 122.57, 106.569 )
+[node name="Checkpoint" parent="." instance=ExtResource( 9 )]
+position = Vector2( 180.03, 34.9563 )
+
+[node name="Checkpoint2" parent="." instance=ExtResource( 9 )]
+position = Vector2( 50.8923, 109.014 )
+
+[node name="Checkpoint3" parent="." instance=ExtResource( 9 )]
+position = Vector2( 122.173, 109.014 )
 
 [node name="ColumnBroken2" parent="." instance=ExtResource( 6 )]
 position = Vector2( 271.368, 142.34 )
@@ -40,11 +46,5 @@ position = Vector2( 40.1154, 144.819 )
 [node name="LargeWall2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 121.308, 145.365 )
 
-[node name="Checkpoint" parent="." instance=ExtResource( 9 )]
-position = Vector2( 180.03, 34.9563 )
-
-[node name="Checkpoint2" parent="." instance=ExtResource( 9 )]
-position = Vector2( 50.8923, 109.014 )
-
-[node name="Checkpoint3" parent="." instance=ExtResource( 9 )]
-position = Vector2( 122.173, 109.014 )
+[node name="Character" parent="." instance=ExtResource( 1 )]
+position = Vector2( 122.57, 106.569 )
