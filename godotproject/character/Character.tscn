@@ -13,7 +13,6 @@ contacts_reported = 2
 contact_monitor = true
 can_sleep = false
 script = ExtResource( 2 )
-INPUT_DELAY_MSECS = 1000.0
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -29,5 +28,9 @@ shape = SubResource( 1 )
 
 [node name="FireParticle" parent="." instance=ExtResource( 3 )]
 position = Vector2( 0, 12 )
+
+[node name="VisibilityHitbox" type="VisibilityNotifier2D" parent="."]
+position = Vector2( -7.15256e-07, 7.15256e-07 )
+scale = Vector2( 1.6, 1.6 )
 [connection signal="area_entered" from="CheckpointCollider" to="." method="_on_CheckpointCollider_area_entered"]
 [connection signal="area_exited" from="CheckpointCollider" to="." method="_on_CheckpointCollider_area_exited"]

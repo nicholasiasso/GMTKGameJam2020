@@ -9,6 +9,10 @@ export(float) var INPUT_DELAY_MSECS: int = 1000
 var input_slices: Array = []
 var active_checkpoint: Checkpoint
 var colliding_checkpoint: Checkpoint
+var is_on_screen: bool = true
+
+func _ready():
+	$VisibilityHitbox.connect("screen_exited", self, "left_screen")
 
 class InputSlice:
 	# I'm not using getters and setters here because
@@ -28,13 +32,14 @@ func _process(_delta: float) -> void:
 			active_checkpoint.is_active = true
 
 func _integrate_forces(state: Physics2DDirectBodyState) -> void:
-	if Input.is_action_just_pressed("reset"):
+	if Input.is_action_just_pressed("reset") || !self.is_on_screen:
 		state.transform = Transform2D(0.0, active_checkpoint.get_spawn_position())
 		state.linear_velocity = Vector2.ZERO
 		state.angular_velocity = 0.0
 		input_slices = []
 		set_applied_force(Vector2.ZERO)
 		set_applied_torque(0.0)
+		self.is_on_screen = true
 		return
 		
 	var current_input: InputSlice = pop_and_return_delayed_input()
@@ -78,3 +83,6 @@ func _on_CheckpointCollider_area_exited(area: Checkpoint):
 	if !area:
 		return
 	colliding_checkpoint = null
+
+func left_screen() -> void:
+	self.is_on_screen = false
