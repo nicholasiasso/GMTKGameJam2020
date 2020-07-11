@@ -15,11 +15,6 @@ class InputSlice:
 	var left_action_strength: float
 	var right_action_strength: float
 	var game_tick_msec: int
-
-func _ready():
-	var array = []
-	array.push_front(5)
-	print(array.pop_front())
 	
 func _process(_delta: float) -> void:
 	save_current_input()
