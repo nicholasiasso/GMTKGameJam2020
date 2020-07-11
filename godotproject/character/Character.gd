@@ -20,10 +20,8 @@ class InputSlice:
 	
 func _process(_delta: float) -> void:
 	save_current_input()
-	print(rotation)
-	print(linear_velocity)
 	if !!colliding_checkpoint:
-		if rotation < 0.1 and linear_velocity.length_squared() <= 0.1:
+		if abs(rotation) < 0.1 and linear_velocity.length_squared() <= 0.1:
 			active_checkpoint = colliding_checkpoint
 
 func _integrate_forces(state: Physics2DDirectBodyState) -> void:
