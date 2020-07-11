@@ -41,8 +41,6 @@ func _input(event):
 		curr_index = 0
 	elif (curr_index > options.size() - 1) :
 		curr_index = options.size() - 1
-		
-	print(curr_index)
 	
 	for i in range(options.size()):
 		var menu_label : Label = options[i]
