@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Dungeon Ruins Tileset Night.png-5de0392857b8677c5b3cdefac00b773a.stex"
+path="res://.import/FlameParticle.png-bbc467f25d810e7866a7678dc0386ffe.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Dungeon Ruins Tileset Night.png"
-dest_files=[ "res://.import/Dungeon Ruins Tileset Night.png-5de0392857b8677c5b3cdefac00b773a.stex" ]
+source_file="res://assets/images/FlameParticle.png"
+dest_files=[ "res://.import/FlameParticle.png-bbc467f25d810e7866a7678dc0386ffe.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

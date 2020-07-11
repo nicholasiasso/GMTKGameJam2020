@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/text/gugi_dynamic_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://ui/MainMenu.gd" type="Script" id=2]
+
+[node name="MainMenu" type="MarginContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 313.0
+margin_bottom = 173.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 306.0
+margin_bottom = 166.0
+
+[node name="Play" type="Label" parent="VBoxContainer" groups=[
+"MainMenuText",
+]]
+margin_right = 306.0
+margin_bottom = 21.0
+custom_fonts/font = ExtResource( 1 )
+text = ">- Play -<"
+align = 1
+uppercase = true
+
+[node name="Options" type="Label" parent="VBoxContainer" groups=[
+"MainMenuText",
+]]
+margin_top = 25.0
+margin_right = 306.0
+margin_bottom = 46.0
+custom_fonts/font = ExtResource( 1 )
+text = "Options"
+align = 1
+uppercase = true
+
+[node name="Credits" type="Label" parent="VBoxContainer" groups=[
+"MainMenuText",
+]]
+margin_top = 50.0
+margin_right = 306.0
+margin_bottom = 71.0
+custom_fonts/font = ExtResource( 1 )
+text = "Credits"
+align = 1
+uppercase = true
+
+[node name="MainMenuMusic" type="AudioStreamPlayer2D" parent="."]

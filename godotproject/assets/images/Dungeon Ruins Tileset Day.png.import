@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/lander.png-8c4ce470902b31be3a1fb046b90397db.stex"
+path="res://.import/Dungeon Ruins Tileset Day.png-49e7ea9ca2c71ae3bbb463d0066637f9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/lander.png"
-dest_files=[ "res://.import/lander.png-8c4ce470902b31be3a1fb046b90397db.stex" ]
+source_file="res://assets/images/Dungeon Ruins Tileset Day.png"
+dest_files=[ "res://.import/Dungeon Ruins Tileset Day.png-49e7ea9ca2c71ae3bbb463d0066637f9.stex" ]
 
 [params]
 
