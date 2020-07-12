@@ -10,6 +10,8 @@ onready var camera_center: Node2D = $CameraCenter
 var camera_position: Vector2
 
 var is_active = false setget set_is_active
+export var trigger_spike: bool = false
+signal checkpoint_activated
 
 func _ready() -> void:
 	hover_animation_player.play("Float")
@@ -23,6 +25,7 @@ func set_is_active(active: bool) -> void:
 		sprite.visible = false
 		activated_glow.visible = active
 		is_active = active
+		emit_signal("checkpoint_activated")
 	else:
 		queue_free()
 

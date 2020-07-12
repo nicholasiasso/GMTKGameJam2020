@@ -1,4 +1,5 @@
 extends RigidBody2D
+class_name Character
 
 export(float) var ROTATION_SPEED: float = 5.0
 export(float) var ROTATION_ACCEL: float = 200.0
@@ -6,8 +7,12 @@ export(float) var THRUST_FORCE: float = 200.0
 
 export(float) var INPUT_DELAY_MSECS: int = 1000
 
+var has_antennae: bool = true
 export(float) var ANTENNAE_ROTATION_DEG: float = 15
 onready var antennae: Node2D = $Antennae
+const AntennaeFalling: Resource = preload("res://character/AntennaeFalling.tscn")
+onready var cutscene_timer: Timer = $CutsceneTimer
+var is_paused: bool = false
 
 var input_slices: Array = []
 var active_checkpoint: Checkpoint
@@ -35,8 +40,9 @@ func _process(_delta: float) -> void:
 			active_checkpoint = colliding_checkpoint
 			active_checkpoint.is_active = true
 			emit_signal("active_checkpoint_changed", active_checkpoint)
-	var delta = sin(OS.get_ticks_msec() / 400.0) * 15
-	antennae.rotation_degrees = -rotation_degrees + ANTENNAE_ROTATION_DEG + delta
+	if has_antennae and !!antennae:
+		var delta = sin(OS.get_ticks_msec() / 400.0) * 15
+		antennae.rotation_degrees = -rotation_degrees + ANTENNAE_ROTATION_DEG + delta
 
 func _integrate_forces(state: Physics2DDirectBodyState) -> void:
 	if Input.is_action_just_pressed("reset") || !self.is_on_screen:
@@ -68,6 +74,8 @@ func _integrate_forces(state: Physics2DDirectBodyState) -> void:
 	set_applied_torque(torque)
 	
 func save_current_input() -> void:
+	if is_paused:
+		return
 	var current_input: InputSlice = InputSlice.new()
 	current_input.up_action_strength = Input.get_action_strength("up")
 	current_input.left_action_strength = Input.get_action_strength("left")
@@ -75,12 +83,28 @@ func save_current_input() -> void:
 	current_input.game_tick_msec = OS.get_ticks_msec()
 	input_slices.push_back(current_input)
 
+func get_current_input_delay() -> int:
+	if has_antennae:
+		return 0
+	return INPUT_DELAY_MSECS
+
 func pop_and_return_delayed_input() -> InputSlice:
 	var current_game_tick_msec = OS.get_ticks_msec()
 	var result: InputSlice
-	while input_slices.size() != 0 and input_slices.front().game_tick_msec + INPUT_DELAY_MSECS < current_game_tick_msec:
+	while input_slices.size() != 0 and input_slices.front().game_tick_msec + get_current_input_delay() < current_game_tick_msec:
 		result = input_slices.pop_front()
 	return result
+	
+func drop_antennae() -> void:
+	has_antennae = false
+	is_paused = true
+	cutscene_timer.start()
+	var antennae_falling = AntennaeFalling.instance()
+	antennae_falling.global_position = antennae.global_position
+	antennae.queue_free()
+	get_parent().add_child(antennae_falling)
+	get_parent().move_child(antennae_falling, get_parent().get_child_count() - 1)
+	
 
 func _on_CheckpointCollider_area_entered(area: Checkpoint):
 	if area:
@@ -97,4 +121,6 @@ func _on_SpikeCollider_area_entered(area: SpikeArea2D):
 func _on_CameraCollider_area_exited(area: CameraBoundingBox):
 	if area:
 		self.is_on_screen = false
-	
+
+func _on_CutsceneTimer_timeout():
+	is_paused = false
