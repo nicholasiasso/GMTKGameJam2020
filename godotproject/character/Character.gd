@@ -6,6 +6,9 @@ export(float) var THRUST_FORCE: float = 200.0
 
 export(float) var INPUT_DELAY_MSECS: int = 1000
 
+export(float) var ANTENNAE_ROTATION_DEG: float = 15
+onready var antennae: Node2D = $Antennae
+
 var input_slices: Array = []
 var active_checkpoint: Checkpoint
 var colliding_checkpoint: Checkpoint
@@ -32,6 +35,7 @@ func _process(_delta: float) -> void:
 			active_checkpoint = colliding_checkpoint
 			active_checkpoint.is_active = true
 			emit_signal("active_checkpoint_changed", active_checkpoint)
+	antennae.rotation_degrees = -rotation_degrees + ANTENNAE_ROTATION_DEG
 
 func _integrate_forces(state: Physics2DDirectBodyState) -> void:
 	if Input.is_action_just_pressed("reset") || !self.is_on_screen:

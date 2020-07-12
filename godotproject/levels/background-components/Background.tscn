@@ -2,7 +2,7 @@
 
 [ext_resource path="res://levels/background-components/Background.gd" type="Script" id=1]
 
-[sub_resource type="Curve2D" id=2]
+[sub_resource type="Curve2D" id=1]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 320, 0, 0, 0, 0, 0, 320, 136 )
 }
@@ -21,7 +21,7 @@ margin_bottom = 180.0
 color = Color( 1, 0.627451, 0.407843, 1 )
 
 [node name="DustSpawnPath" type="Path2D" parent="."]
-curve = SubResource( 2 )
+curve = SubResource( 1 )
 
 [node name="DustSpawner" type="PathFollow2D" parent="DustSpawnPath"]
 position = Vector2( 320, 0 )

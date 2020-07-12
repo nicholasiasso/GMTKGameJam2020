@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/images/lander.png" type="Texture" id=1]
 [ext_resource path="res://character/Character.gd" type="Script" id=2]
 [ext_resource path="res://character/FireParticle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/images/antennae.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 14, 14 )
@@ -31,5 +32,13 @@ shape = SubResource( 1 )
 
 [node name="FireParticle" parent="." instance=ExtResource( 3 )]
 position = Vector2( -1, 13 )
+
+[node name="Antennae" type="Node2D" parent="."]
+position = Vector2( 4.98772, -5.22523 )
+
+[node name="Sprite" type="Sprite" parent="Antennae"]
+position = Vector2( 2.84166, -5 )
+rotation = 0.523599
+texture = ExtResource( 4 )
 [connection signal="area_entered" from="CheckpointCollider" to="." method="_on_CheckpointCollider_area_entered"]
 [connection signal="area_exited" from="CheckpointCollider" to="." method="_on_CheckpointCollider_area_exited"]
