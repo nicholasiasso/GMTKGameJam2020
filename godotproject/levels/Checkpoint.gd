@@ -1,4 +1,5 @@
 extends Area2D
+class_name Checkpoint
 
 onready var hover_animation_player: AnimationPlayer = $HoverAnimationPlayer
 onready var glow_animation_player: AnimationPlayer = $ActivatedGlow/GlowAnimationPlayer
@@ -7,8 +8,6 @@ onready var sprite: Sprite = $Sprite
 
 onready var camera_center: Node2D = $CameraCenter
 var camera_position: Vector2
-
-class_name Checkpoint
 
 var is_active = false setget set_is_active
 
