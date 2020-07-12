@@ -970,7 +970,7 @@ script = ExtResource( 1 )
 shape = SubResource( 59 )
 
 [node name="Character" parent="." instance=ExtResource( 8 )]
-position = Vector2( 928, -336 )
+position = Vector2( 40.1643, 160.075 )
 INPUT_DELAY_MSECS = 750.0
 [connection signal="checkpoint_activated" from="Checkpoints/Checkpoint13" to="." method="_on_Checkpoint13_checkpoint_activated"]
 [connection signal="active_checkpoint_changed" from="Character" to="Camera" method="_on_Character_active_checkpoint_changed"]

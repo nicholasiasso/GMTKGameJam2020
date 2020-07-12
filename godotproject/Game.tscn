@@ -24,7 +24,7 @@ margin_bottom = 8192.0
 position = Vector2( 4175, 4096 )
 
 [node name="MainMenu" parent="." instance=ExtResource( 3 )]
-margin_top = 60.0
+margin_top = 30.0
 
 [node name="MainMenuPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )

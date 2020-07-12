@@ -7,6 +7,10 @@ func _ready() -> void:
 	var window_size = OS.get_window_size()
 	OS.set_window_position(screen_size*0.5 - window_size*0.5)
 
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		get_tree().quit()
+
 func start_game() -> void:
 	$MainMenu.visible = false
 	$MainMenu.queue_free()
@@ -19,7 +23,7 @@ func back_to_menu_from_credits() -> void:
 	$Credits.visible = false
 	$Credits.queue_free()
 	var menu = load("res://ui/MainMenu.tscn").instance()
-	menu.margin_top = 60
+	menu.margin_top = 30
 	self.add_child(menu)
 	menu.connect("menu_option_selected", self, "_on_MainMenu_menu_option_selected")
 	
@@ -27,7 +31,7 @@ func back_to_menu_from_options() -> void:
 	$Options.visible = false
 	$Options.queue_free()
 	var menu = load("res://ui/MainMenu.tscn").instance()
-	menu.margin_top = 60
+	menu.margin_top = 30
 	self.add_child(menu)
 	menu.connect("menu_option_selected", self, "_on_MainMenu_menu_option_selected")
 
@@ -61,6 +65,8 @@ func _on_MainMenu_menu_option_selected(option):
 		display_options()
 	elif option.begins_with("credits"):
 		display_credits()
+	elif option.begins_with("quit"):
+		get_tree().quit()
 
 func _on_Credits_menu_option_selected(option):
 	option = option.to_lower()
