@@ -79,25 +79,25 @@ func _on_Options_menu_option_selected(option):
 		back_to_menu_from_options()
 
 func _on_Options_vol_adjust(value):
-	var curr_player: AudioStreamPlayer = get_curr_audio_stream_player()
 	if value == 0:
-		curr_player.stream_paused = true
+		$MainMenuPlayer.stream_paused = true
+		$LevelPlayer.stream_paused = true
 	else:
-		curr_player.stream_paused = false
+		if is_menu:
+			$MainMenuPlayer.stream_paused = false
+		else:
+			$LevelPlayer.stream_paused = false
+		
 		#Default dbs is -12
 		var dbs: int = -12
 		if value < 7:
 			dbs -= (7-value) * 2
 		elif value > 7:
 			dbs += (value-7) * 2
-		curr_player.volume_db = dbs
-		
-func get_curr_audio_stream_player():
-	if is_menu:
-		return $MainMenuPlayer
-	else:
-		return $LevelPlayer
-
+			
+		print(dbs)
+		$MainMenuPlayer.volume_db = dbs
+		$LevelPlayer.volume_db = dbs
 
 func _on_StartTimer_timeout():
 	$GmtkLogo.visible = false
