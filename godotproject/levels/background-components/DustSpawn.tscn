@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://levels/background-components/DustSpawn.gd" type="Script" id=1]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 246.331, -0.583557, 0, 0, 0, 0, 246.892, 181.817 )
+}
+
+[node name="DustSpawnPath" type="Path2D"]
+curve = SubResource( 1 )
+script = ExtResource( 1 )
+
+[node name="DustSpawnLocation" type="PathFollow2D" parent="."]
+position = Vector2( 246.331, -0.583557 )
+rotation = 1.56771
+
+[node name="DustTimer" type="Timer" parent="."]
+autostart = true
+[connection signal="timeout" from="DustTimer" to="." method="_on_DustTimer_timeout"]

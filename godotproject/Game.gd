@@ -97,6 +97,8 @@ func _on_StartTimer_timeout():
 	$GmtkLogo.visible = false
 	var world = load("res://levels/World.tscn").instance()
 	self.add_child(world)
+	var camera: Node = get_tree().get_nodes_in_group("CameraGroup")[0]
+	camera.connect("camera_moved", $Background, "move_spawner")
 	$MainMenuPlayer.stop()
 	$LevelPlayer.play()
 	
