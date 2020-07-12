@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/images/FlameParticle.png" type="Texture" id=1]
 
 [node name="FireParticle" type="CPUParticles2D"]
-z_index = -1
+z_index = 2
 emitting = false
 amount = 5
 lifetime = 0.25

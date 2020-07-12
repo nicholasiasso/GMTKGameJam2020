@@ -79,5 +79,4 @@ func _on_Options_vol_adjust(value):
 			dbs -= (7-value) * 2
 		elif value > 7:
 			dbs += (value-7) * 2
-		print(dbs)
 		$AudioStreamPlayer.volume_db = dbs
