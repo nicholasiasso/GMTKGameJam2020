@@ -15,6 +15,7 @@ contact_monitor = true
 can_sleep = false
 script = ExtResource( 2 )
 INPUT_DELAY_MSECS = 0.0
+ANTENNAE_ROTATION_DEG = -40.0
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, 2 )
@@ -34,11 +35,10 @@ shape = SubResource( 1 )
 position = Vector2( -1, 13 )
 
 [node name="Antennae" type="Node2D" parent="."]
-position = Vector2( 4.98772, -5.22523 )
+position = Vector2( -7.392, -2.73192 )
 
 [node name="Sprite" type="Sprite" parent="Antennae"]
-position = Vector2( 2.84166, -5 )
-rotation = 0.523599
+position = Vector2( 0, -5 )
 texture = ExtResource( 4 )
 [connection signal="area_entered" from="CheckpointCollider" to="." method="_on_CheckpointCollider_area_entered"]
 [connection signal="area_exited" from="CheckpointCollider" to="." method="_on_CheckpointCollider_area_exited"]
