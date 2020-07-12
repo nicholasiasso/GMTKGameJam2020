@@ -35,7 +35,8 @@ func _process(_delta: float) -> void:
 			active_checkpoint = colliding_checkpoint
 			active_checkpoint.is_active = true
 			emit_signal("active_checkpoint_changed", active_checkpoint)
-	antennae.rotation_degrees = -rotation_degrees + ANTENNAE_ROTATION_DEG
+	var delta = sin(OS.get_ticks_msec() / 400.0) * 15
+	antennae.rotation_degrees = -rotation_degrees + ANTENNAE_ROTATION_DEG + delta
 
 func _integrate_forces(state: Physics2DDirectBodyState) -> void:
 	if Input.is_action_just_pressed("reset") || !self.is_on_screen:
