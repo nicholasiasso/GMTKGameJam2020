@@ -98,8 +98,6 @@ func pop_and_return_delayed_input() -> InputSlice:
 	
 func drop_antennae() -> void:
 	has_antennae = false
-	is_paused = true
-	cutscene_timer.start()
 	var antennae_falling = AntennaeFalling.instance()
 	antennae_falling.global_position = antennae.global_position
 	antennae.queue_free()
@@ -124,6 +122,10 @@ func _on_SpikeCollider_area_entered(area: SpikeArea2D):
 func _on_CameraCollider_area_exited(area: CameraBoundingBox):
 	if area:
 		self.is_on_screen = false
+
+func pause_for_cutscene() -> void:
+	is_paused = true
+	cutscene_timer.start()
 
 func _on_CutsceneTimer_timeout():
 	is_paused = false

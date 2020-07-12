@@ -952,10 +952,10 @@ __meta__ = {
 
 [node name="FallingSpike" parent="." instance=ExtResource( 7 )]
 position = Vector2( 928, -504 )
+
 [node name="Camera" type="Camera2D" parent="." groups=[
 "CameraGroup",
 ]]
-
 position = Vector2( 152, 112 )
 current = true
 script = ExtResource( 2 )
