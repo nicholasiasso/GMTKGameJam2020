@@ -90,9 +90,8 @@ func _on_CheckpointCollider_area_exited(area: Checkpoint):
 		return
 	colliding_checkpoint = null
 
-func left_screen() -> void:
-	self.is_on_screen = false
-
 #When this characters area exits the camera bounding box
-func _on_Area2D_area_exited(area):
+func _on_Area2D_area_exited(area: CameraBoundingBox):
+	if !area:
+		return
 	self.is_on_screen = false

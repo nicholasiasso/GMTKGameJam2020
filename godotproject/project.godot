@@ -10,11 +10,17 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Area2D",
+"class": "CameraBoundingBox",
+"language": "GDScript",
+"path": "res://levels/BoundingBox.gd"
+}, {
+"base": "Area2D",
 "class": "Checkpoint",
 "language": "GDScript",
 "path": "res://levels/Checkpoint.gd"
 } ]
 _global_script_class_icons={
+"CameraBoundingBox": "",
 "Checkpoint": ""
 }
 
