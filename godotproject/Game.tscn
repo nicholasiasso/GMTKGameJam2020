@@ -11,8 +11,17 @@
 script = ExtResource( 2 )
 
 [node name="Background" parent="." instance=ExtResource( 1 )]
-margin_right = 320.0
-margin_bottom = 180.0
+margin_left = -4096.0
+margin_top = -4096.0
+margin_right = 4096.0
+margin_bottom = 4096.0
+
+[node name="ColorRect" parent="Background" index="0"]
+margin_right = 8192.0
+margin_bottom = 8192.0
+
+[node name="DustSpawnPath" parent="Background" index="1"]
+position = Vector2( 4175, 4096 )
 
 [node name="MainMenu" parent="." instance=ExtResource( 3 )]
 margin_top = 60.0
@@ -34,3 +43,5 @@ one_shot = true
 position = Vector2( 160, 90 )
 [connection signal="menu_option_selected" from="MainMenu" to="." method="_on_MainMenu_menu_option_selected"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
+
+[editable path="Background"]
