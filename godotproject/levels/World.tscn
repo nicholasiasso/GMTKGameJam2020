@@ -998,7 +998,6 @@ shape = SubResource( 59 )
 
 [node name="Character" parent="." instance=ExtResource( 8 )]
 position = Vector2( 40, 160 )
->>>>>>> d79143b73892b172500562fe0123891dcdafee80
 INPUT_DELAY_MSECS = 750.0
 [connection signal="checkpoint_activated" from="Checkpoints/Checkpoint13" to="." method="_on_Checkpoint13_checkpoint_activated"]
 [connection signal="active_checkpoint_changed" from="Character" to="Camera" method="_on_Character_active_checkpoint_changed"]
