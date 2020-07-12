@@ -48,5 +48,3 @@ custom_fonts/font = ExtResource( 1 )
 text = "Credits"
 align = 1
 uppercase = true
-
-[node name="MainMenuMusic" type="AudioStreamPlayer2D" parent="."]
