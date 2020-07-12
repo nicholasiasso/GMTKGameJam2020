@@ -13,6 +13,7 @@ onready var antennae: Node2D = $Antennae
 const AntennaeFalling: Resource = preload("res://character/AntennaeFalling.tscn")
 onready var cutscene_timer: Timer = $CutsceneTimer
 var is_paused: bool = false
+const CommsWarning: Resource = preload("res://character/CommsWarning.tscn")
 
 var input_slices: Array = []
 var active_checkpoint: Checkpoint
@@ -104,6 +105,8 @@ func drop_antennae() -> void:
 	antennae.queue_free()
 	get_parent().add_child(antennae_falling)
 	get_parent().move_child(antennae_falling, get_parent().get_child_count() - 1)
+	var comms_warning = CommsWarning.instance()
+	add_child(comms_warning)
 	
 
 func _on_CheckpointCollider_area_entered(area: Checkpoint):

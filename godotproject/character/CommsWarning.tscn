@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/text/world_labels.tres" type="DynamicFont" id=1]
+[ext_resource path="res://levels/WarningIcon.gd" type="Script" id=2]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="WarningLabel" type="Label" parent="."]
+anchor_right = 0.125
+anchor_bottom = 0.089
+margin_right = -31.0
+margin_bottom = -2.02
+custom_fonts/font = ExtResource( 1 )
+text = "!!! Comms Offline. Expect Delay."
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="WarningLabel"]
+autostart = true
+[connection signal="timeout" from="WarningLabel/Timer" to="WarningLabel" method="_on_Timer_timeout"]

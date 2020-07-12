@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=2]
+[gd_scene load_steps=69 format=2]
 
 [ext_resource path="res://levels/BoundingBox.gd" type="Script" id=1]
 [ext_resource path="res://levels/Camera.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://levels/Checkpoint.tscn" type="PackedScene" id=6]
 [ext_resource path="res://levels/FallingSpike.tscn" type="PackedScene" id=7]
 [ext_resource path="res://character/Character.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/text/world_labels.tres" type="DynamicFont" id=9]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -888,6 +889,67 @@ position = Vector2( -120, -40 )
 [node name="Checkpoint21" parent="Checkpoints" instance=ExtResource( 6 )]
 position = Vector2( -104, -40 )
 
+[node name="Labels" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="Labels"]
+margin_left = 24.0
+margin_top = 72.0
+margin_right = 309.0
+margin_bottom = 89.0
+custom_fonts/font = ExtResource( 9 )
+text = "Your faster-than-light antenna lets you 
+explore this distant planet easily."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Labels"]
+margin_left = 210.0
+margin_top = 136.0
+margin_right = 272.0
+margin_bottom = 153.0
+custom_fonts/font = ExtResource( 9 )
+text = "Arrows to move"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Labels"]
+margin_left = 390.0
+margin_top = 123.0
+margin_right = 452.0
+margin_bottom = 140.0
+custom_fonts/font = ExtResource( 9 )
+text = "R to reset"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="Labels"]
+margin_left = 456.0
+margin_top = 8.0
+margin_right = 543.0
+margin_bottom = 29.0
+custom_fonts/font = ExtResource( 9 )
+text = "Be careful though.
+It is particularly fragile"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="Labels"]
+margin_left = 320.0
+margin_top = 40.0
+margin_right = 393.0
+margin_bottom = 73.0
+custom_fonts/font = ExtResource( 9 )
+text = "You can transmit 
+commands to your
+ship in an instant."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="FallingSpike" parent="." instance=ExtResource( 7 )]
 position = Vector2( 928, -504 )
 
@@ -899,13 +961,14 @@ script = ExtResource( 2 )
 [node name="Tween" type="Tween" parent="Camera"]
 
 [node name="BoundingBox" type="Area2D" parent="Camera"]
+visible = false
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera/BoundingBox"]
 shape = SubResource( 59 )
 
 [node name="Character" parent="." instance=ExtResource( 8 )]
-position = Vector2( 40, 160 )
+position = Vector2( 928, -336 )
 INPUT_DELAY_MSECS = 750.0
 [connection signal="checkpoint_activated" from="Checkpoints/Checkpoint13" to="." method="_on_Checkpoint13_checkpoint_activated"]
 [connection signal="active_checkpoint_changed" from="Character" to="Camera" method="_on_Character_active_checkpoint_changed"]
