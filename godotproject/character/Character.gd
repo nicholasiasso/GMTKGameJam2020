@@ -47,6 +47,7 @@ func _integrate_forces(state: Physics2DDirectBodyState) -> void:
 		set_applied_force(Vector2.ZERO)
 		set_applied_torque(0.0)
 		self.is_on_screen = true
+		colliding_checkpoint = null
 		return
 		
 	var current_input: InputSlice = pop_and_return_delayed_input()
