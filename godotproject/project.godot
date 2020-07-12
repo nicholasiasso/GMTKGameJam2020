@@ -18,10 +18,16 @@ _global_script_classes=[ {
 "class": "Checkpoint",
 "language": "GDScript",
 "path": "res://levels/Checkpoint.gd"
+}, {
+"base": "Area2D",
+"class": "SpikeArea2D",
+"language": "GDScript",
+"path": "res://levels/SpikeArea2D.gd"
 } ]
 _global_script_class_icons={
 "CameraBoundingBox": "",
-"Checkpoint": ""
+"Checkpoint": "",
+"SpikeArea2D": ""
 }
 
 [application]

@@ -81,17 +81,18 @@ func pop_and_return_delayed_input() -> InputSlice:
 	return result
 
 func _on_CheckpointCollider_area_entered(area: Checkpoint):
-	if !area:
-		return
-	colliding_checkpoint = area
+	if area:
+		colliding_checkpoint = area
 
 func _on_CheckpointCollider_area_exited(area: Checkpoint):
-	if !area:
-		return
-	colliding_checkpoint = null
+	if area:
+		colliding_checkpoint = null
 
-#When this characters area exits the camera bounding box
-func _on_Area2D_area_exited(area: CameraBoundingBox):
-	if !area:
-		return
-	self.is_on_screen = false
+func _on_SpikeCollider_area_entered(area: SpikeArea2D):
+	if area:
+		self.is_on_screen = false
+
+func _on_CameraCollider_area_exited(area: CameraBoundingBox):
+	if area:
+		self.is_on_screen = false
+	
