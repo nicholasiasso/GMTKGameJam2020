@@ -747,7 +747,7 @@ position = Vector2( 112, -56 )
 position = Vector2( 240, 168 )
 
 [node name="CameraCenter" parent="Checkpoints/Checkpoint2" index="4"]
-position = Vector2( 96, -64 )
+position = Vector2( 96, -56 )
 
 [node name="Checkpoint3" parent="Checkpoints" instance=ExtResource( 6 )]
 position = Vector2( 408, 152 )
@@ -939,10 +939,10 @@ __meta__ = {
 }
 
 [node name="Label4" type="Label" parent="Labels"]
-margin_left = 456.0
-margin_top = 8.0
-margin_right = 543.0
-margin_bottom = 29.0
+margin_left = 500.0
+margin_top = 5.0
+margin_right = 587.0
+margin_bottom = 26.0
 custom_fonts/font = ExtResource( 9 )
 text = "Be careful though.
 It is particularly fragile"
