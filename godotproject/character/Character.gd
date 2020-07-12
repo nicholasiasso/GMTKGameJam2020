@@ -15,9 +15,6 @@ var camera: Camera2D
 
 signal active_checkpoint_changed(checkpoint)
 
-func _ready():
-	$VisibilityHitbox.connect("screen_exited", self, "left_screen")
-
 class InputSlice:
 	# I'm not using getters and setters here because
 	# this class is meant to emulate a struct
@@ -90,4 +87,8 @@ func _on_CheckpointCollider_area_exited(area: Checkpoint):
 	colliding_checkpoint = null
 
 func left_screen() -> void:
+	self.is_on_screen = false
+
+#When this characters area exits the camera bounding box
+func _on_Area2D_area_exited(area):
 	self.is_on_screen = false

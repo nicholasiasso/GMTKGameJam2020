@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://levels/Camera.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/rocktiles.png" type="Texture" id=3]
@@ -454,6 +454,9 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 } ]
 0/z_index = 0
 
+[sub_resource type="RectangleShape2D" id=49]
+extents = Vector2( 160, 90 )
+
 [node name="World" type="Node2D"]
 
 [node name="RockTileMap" type="TileMap" parent="."]
@@ -469,6 +472,11 @@ current = true
 script = ExtResource( 2 )
 
 [node name="Tween" type="Tween" parent="Camera"]
+
+[node name="BoundingBox" type="Area2D" parent="Camera"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera/BoundingBox"]
+shape = SubResource( 49 )
 
 [node name="Checkpoint" parent="." instance=ExtResource( 6 )]
 position = Vector2( 40, 168 )
@@ -507,7 +515,7 @@ position = Vector2( 832, -24 )
 position = Vector2( 0, -8 )
 
 [node name="CameraCenter" parent="Checkpoint6" index="4"]
-position = Vector2( -48, -88 )
+position = Vector2( -48, -72 )
 
 [node name="Checkpoint7" parent="." instance=ExtResource( 6 )]
 position = Vector2( 728, -136 )
@@ -532,7 +540,7 @@ position = Vector2( 1168, -88 )
 
 [node name="Character" parent="." instance=ExtResource( 8 )]
 position = Vector2( 40, 160 )
-INPUT_DELAY_MSECS = 750.0
+[connection signal="area_exited" from="Camera/BoundingBox" to="Character" method="_on_Area2D_area_exited"]
 [connection signal="active_checkpoint_changed" from="Character" to="Camera" method="_on_Character_active_checkpoint_changed"]
 
 [editable path="Checkpoint"]
