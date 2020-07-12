@@ -1,15 +1,19 @@
 extends Node2D
 
+var is_menu: bool = false
+
 func _ready() -> void:
 	var screen_size = OS.get_screen_size()
 	var window_size = OS.get_window_size()
 	OS.set_window_position(screen_size*0.5 - window_size*0.5)
 
 func start_game() -> void:
-	var world = load("res://levels/World.tscn").instance()
 	$MainMenu.visible = false
 	$MainMenu.queue_free()
-	self.add_child(world)
+	is_menu = false
+	$StartTimer.start()
+	$GmtkLogo.visible = true
+	$GmtkLogo.playing = true
 
 func back_to_menu_from_credits() -> void:
 	$Credits.visible = false
@@ -69,14 +73,30 @@ func _on_Options_menu_option_selected(option):
 		back_to_menu_from_options()
 
 func _on_Options_vol_adjust(value):
+	var curr_player: AudioStreamPlayer = get_curr_audio_stream_player()
 	if value == 0:
-		$AudioStreamPlayer.stream_paused = true
+		curr_player.stream_paused = true
 	else:
-		$AudioStreamPlayer.stream_paused = false
+		curr_player.stream_paused = false
 		#Default dbs is -12
 		var dbs: int = -12
 		if value < 7:
 			dbs -= (7-value) * 2
 		elif value > 7:
 			dbs += (value-7) * 2
-		$AudioStreamPlayer.volume_db = dbs
+		curr_player.volume_db = dbs
+		
+func get_curr_audio_stream_player():
+	if is_menu:
+		return $MainMenuPlayer
+	else:
+		return $LevelPlayer
+
+
+func _on_StartTimer_timeout():
+	$GmtkLogo.visible = false
+	var world = load("res://levels/World.tscn").instance()
+	self.add_child(world)
+	$MainMenuPlayer.stop()
+	$LevelPlayer.play()
+	
