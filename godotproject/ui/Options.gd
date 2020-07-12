@@ -7,11 +7,11 @@ var options: Array = []
 var curr_index: int = 0
 
 signal menu_option_selected(option)
+signal vol_adjust(value)
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	options = get_tree().get_nodes_in_group("MainMenuText")
-
+	options = get_tree().get_nodes_in_group("OptionsText")
+	
 func set_selected(label: Label) -> void:
 	var text = label.text
 	if !text.begins_with(select_prefix):
@@ -31,6 +31,7 @@ func _input(event):
 		emit_signal("menu_option_selected", options[curr_index].text.trim_prefix(select_prefix).trim_suffix(select_suffix))
 		return
 	
+	#Switch options
 	var diff: int = 0;
 	if (event.is_action_pressed("down")):
 		diff = 1
@@ -49,3 +50,17 @@ func _input(event):
 			set_selected(menu_label)
 		else:
 			set_unselected(menu_label)
+	
+	# Edit volume
+	if curr_index == 0:
+		adjust_volume(event)
+	
+
+func adjust_volume(event):
+	var volume_diff: int = 0
+	if (event.is_action_pressed("right")):
+		volume_diff = -1
+	if (event.is_action_pressed("left")):
+		volume_diff = 1
+	$VBoxContainer/VolumeSlider.value -= volume_diff
+	emit_signal("vol_adjust", $VBoxContainer/VolumeSlider.value)

@@ -9,7 +9,6 @@ signal menu_option_selected(option)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
 	options = get_tree().get_nodes_in_group("CreditsMenuText")
 
 func set_selected(label: Label) -> void:
@@ -28,8 +27,13 @@ func _input(event):
 		return
 	
 	if event.is_action_pressed("ui_accept"):
-		var selected = options[curr_index].text.trim_suffix(select_suffix).to_lower().rstrip(" ")
+		var selected = options[curr_index].text.trim_suffix(select_suffix).to_lower()
 		emit_signal("menu_option_selected", selected)
+		if (selected.begins_with("code")):
+			OS.shell_open("https://github.com/nicholasiasso/GMTKGameJam2020")
+		elif (selected.begins_with("music")):
+			OS.shell_open("https://soundcloud.com/user-701036833")
+		
 		return
 	
 	var diff: int = 0;
